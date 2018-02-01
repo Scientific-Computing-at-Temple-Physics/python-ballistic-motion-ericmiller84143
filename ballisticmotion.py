@@ -7,7 +7,7 @@ v0 = input("What is the initital veloctiy?: ")
 theta = input("What is the angle (in degrees) of the velocity above the ground?: ")
 y = input("What is the initial height?: ")
 t = input("What is the time step?: ")
-
+h=y #initial height
 theta = theta * ma.pi / 180  #convert to radians
 x = 0.0 #inital x positon is 0
 v_x = v0*ma.cos(theta)  #find velocity of x
@@ -25,3 +25,4 @@ while (y>=0): #do calculations while the projectile is above the ground
     
 print "The maximum height was", max_h
 print "The time of flight was", flight_time
+#print max((-v0*ma.sin(theta) + ma.sqrt((v0*ma.sin(theta))**2-2*g*h))/(-g),(-v0*ma.sin(theta) - ma.sqrt((v0*ma.sin(theta))**2-2*g*h))/(-g)
