@@ -17,7 +17,7 @@ max_h = y               #max height tracker; starts at initial height
 flight_time  = 0.0      #total time of flight
 
 while (y>0): #do calculations while the projectile is above the ground
-    v_y = v_y - g*t   #find v_y after time step
+    v_y -= g*t   #find v_y after time step
     y += v_y*t     #find y position after time step based on new velocity
     if (y>max_h):
         max_h = y    #if the new height is greater than the old max, update ma height
@@ -28,13 +28,3 @@ while (y>0): #do calculations while the projectile is above the ground
 print "The maximum height was", max_h
 print "The time of flight was", flight_time
 print "The range is", x
-""" 
-rang = 2*v0*ma.sin(theta)/g
-maxheight = v0**2*(ma.sin(theta))**2/(2*g)
-#totalt = (-v0*ma.sin(theta) + ma.sqrt((v0*ma.sin(theta))**2-2*g*h))/(-g)
-
-
-print "The maximum height should be", maxheight
-print "The time of flight should be", totalt
-print "The range should be", rang
-"""
