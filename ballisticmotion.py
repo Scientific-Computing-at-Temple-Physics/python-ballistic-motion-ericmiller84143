@@ -16,7 +16,7 @@ v_y = v0*ma.sin(theta)  #find velocity of x
 max_h = y               #max height tracker; starts at initial height 
 flight_time  = 0.0      #total time of flight
 
-while (y>0): #do calculations while the projectile is above the ground
+while (y>=0): #do calculations while the projectile is above the ground
     v_y -= g*t   #find v_y after time step
     y += v_y*t     #find y position after time step based on new velocity
     if (y>max_h):
