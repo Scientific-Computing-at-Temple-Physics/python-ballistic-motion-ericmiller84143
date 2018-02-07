@@ -2,7 +2,7 @@
 
 import math as ma
 import numpy as np
-import matplotlib.pyplot as plot
+import matplotlib as mpl
 
 g = input("What is the gravitational acceleration?: ")
 v0 = input("What is the initital veloctiy?: ")
@@ -36,6 +36,8 @@ print "The maximum height was", max_h
 print "The time of flight was", flight_time
 print "The range is", x[x.size-1]
 """
-plot.scatter(x,y,'bo')
-update of ballisic motion into array version done up to here
-Just need to plot and check printed values for accuracy"""
+mpl.figure()
+mpl.plot(x,y)
+mpl.show()
+
+Need to create plot and check printed values for accuracy"""
