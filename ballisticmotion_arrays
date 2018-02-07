@@ -14,26 +14,26 @@ h=y #initial height
 theta = theta * ma.pi / 180  #convert to radians
 x = np.zeros(1)  #first x position is assumed to be 0
 y = np.array([y])    #first y position is inputed previously y
-v_x = np.array(v0*ma.cos(theta))    #initalize velocity arrays with given conditions
+v_x = v0*ma.cos(theta)    #initalize velocity arrays with given conditions
 v_y = np.array(v0*ma.sin(theta))
 
 max_h = y[0]               #max height tracker; starts at initial height 
 flight_time  = 0.0      #total time of flight
-
-while (y>=0): #do calculations while the projectile is above the ground
-    size = numpy.ndarray.size(v_y)
-    new_v_y = [v_y[size - 1] - g*t]   #length - 1 is last entry, add -g*t to that value as a new list 
-    v_y = np.append(v_y, new_v_y )
-    new_y_position = [y[size - 1] + v_y[size]*t]   #new y position is final element of previous array plus final element of v_y  * time step
-                                                   #size of y is one less than v_y at this point -> difference in (size - 1) and size
-    """update of ballisic motion into array version done up to here"
-    y += v_y*t     #find y position after time step based on new velocity
-    if (y>max_h):
-        max_h = y    #if the new height is greater than the old max, update ma height
-    #print "The ball is", y, "meters above the ground."
-    x += v_x*t     #find x position after time step
-    flight_time = flight_time + t   #update the time of flight
+size = y.size
+while (y[size-1]>=0): #do calculations while the projectile is above the ground
+    size = y.size
+    v_y = v_y - g*t   
+    new_y_position = [y[size - 1] + v_y*t]   #new y position is final element of previous array plus final element of v_y  * time step
+                                           #size of y is one less than v_y at this point -> difference in (size - 1) and (size)
+    if (new_y_position>max_h):
+        max_h = new_y_position[0]   #if the new height is greater than the old max, update max height
+    y = np.append(y, new_y_position)
+    x = np.append(x, new_x_position)     #find x position after time step
+    flight_time = flight_time + t        #update the time of flight
     
 print "The maximum height was", max_h
 print "The time of flight was", flight_time
-print "The range is", x
+print "The range is", x[x.size-1]
+
+"""update of ballisic motion into array version done up to here
+Just need to plot and check printed values for accuracy"""
