@@ -1,3 +1,4 @@
+#Eric Miller
 #Ballistic Motion in Python
 
 import math as ma
